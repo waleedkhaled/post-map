@@ -15,19 +15,21 @@ export class AboutPage {
     category: string = 'gear';
    // tab1Root: any = HomePage;
     likesNum:any;
-
+    friendsArr:any[]=[]
  
     constructor(public navCtrl: NavController , private modalCrtl: ModalController) {
          this.arr={};
         this.cards = [];
         this.likesNum;
-//    firebase.database().ref('assets').child(item.id).child("likes").once('value').then(function(snapshot) {
-//    snapshot.forEach(function(likeSnapshot) {
-//        var waleed = likeSnapshot.val();
-//   waleed;
-// })
-     
-//      })
+        
+      firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child("friends").once('value', (_snapshot: any) => {
+            let friends=[];
+      _snapshot.forEach((_childSnapshot) => {
+         friends.push(_childSnapshot.val())
+          })
+      this.friendsArr=friends;
+
+      });
 
       firebase.database().ref('assets').orderByKey().once('value', (_snapshot: any) => {
         
@@ -36,8 +38,12 @@ export class AboutPage {
         var element = _childSnapshot.val();
         element.id = _childSnapshot.key;
         //this.obj=element.likes;
+         //console.log(element.owner )
+        if(this.friendsArr.indexOf(element.owner)>-1){
          element.likes=Object.keys(element.likes).length;
-        this.cards.push(element);
+         element.user=element.email.slice(0,element.email.indexOf("@"));
+         this.cards.push(element);
+         }
       })
     })
  
@@ -61,7 +67,7 @@ export class AboutPage {
   }
   showComments(item: any): void{
     let modal = this.modalCrtl.create(CommentsPage,{
-      comments: [item.id]
+      item: item.id
     });
     modal.present();
   }

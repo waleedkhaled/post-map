@@ -1,0 +1,40 @@
+<!--
+  Generated template for the FriendRequest page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar light>
+    <ion-title>friendRequests</ion-title>
+    <ion-buttons left>
+      <button (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon> Back
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+<ion-list>
+    <ion-item *ngFor="let friend of arr">
+   
+      <p>{{friend.user}}</p>
+      <button ion-button round outline (click)="accept(friend.uid,$key)">accept</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+

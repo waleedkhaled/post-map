@@ -11,12 +11,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let comment of comments">
+    <ion-item *ngFor="let comment of arr">
       <!--ion-avatar item-left>
         <img [src]="comment.user.avatar">
       </ion-avatar-->
-      <h2><strong>gjhgj</strong></h2>
-      <p>{{ comment }}</p>
+      <h2><strong>{{comment.user.username}}</strong></h2>
+      <p>{{ comment.comments }}</p>
     </ion-item>
   </ion-list>
 </ion-content>

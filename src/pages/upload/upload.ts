@@ -17,14 +17,17 @@ export class UploadPage {
 
   assetCollection
   userAuth: any
+  userName: any
 
   constructor(public navCtrl: NavController,
     public platform: Platform,
     private http: Http,
     private zone: NgZone
   ) {
-
-
+     // firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child('user').on("value", function(snapshot) {
+     // this.userName=snapshot.val();
+     // console.log(this.userName)
+//})
   }
 
   trackByFunction(index, item) {
@@ -108,7 +111,7 @@ saveToDatabaseAssetList(_uploadSnapshot) {
   return new Promise((resolve, reject) => {
     alert('iam here ')
       Geolocation.getCurrentPosition().then((position) => {
-       
+      alert(this.userName) 
      var dataToSave = {
       'URL': _uploadSnapshot.downloadURL, // url to access file
       'name': _uploadSnapshot.metadata.name, // name of the file
@@ -118,12 +121,11 @@ saveToDatabaseAssetList(_uploadSnapshot) {
       'email': firebase.auth().currentUser.email,
       'lastUpdated': new Date().getTime(),
       'likes':0,
-      'user':firebase.database().ref('/userProfile').child(firebase.auth().currentUser.uid).child('user'),
       'disLike':0,
-      'comments':0
+      'comments':"hello"
 
     };
-    //let url=_uploadSnapshot.downloadURL.slice(-10)
+    
 
     ref.push(dataToSave, (_response) => {
 
