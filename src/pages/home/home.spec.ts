@@ -51,12 +51,12 @@ describe('Page: Home Page', () => {
  
     });
  
-    it('initialises with a title of My Page', () => {
+    it('sigin up page it should takes an email and password', () => {
         //expect(comp['title']).toEqual('My Page
         expect(true).toBe(true)
             });
  
-    it('can set the title to a supplied value', () => {
+    it('takes tow paramater ', () => {
  
         // de = fixture.debugElement.query(By.css('ion-title'));
         // el = de.nativeElement;  
