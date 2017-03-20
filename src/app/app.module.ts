@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import {FriendRequestPage} from '../pages/friend-request/friend-request';
 import { SignupPage } from '../pages/signup/signup';
 import { InfoModalPage } from '../pages/info-modal/info-modal' ;
 import { UploadPage } from '../pages/upload/upload';
@@ -35,7 +36,8 @@ import { FindFriendsPage } from '../pages/fiend-friends/fiend-friends';
     FriendsPage,
     ProfilePage,
     CommentsPage,
-    FindFriendsPage
+    FindFriendsPage,
+    FriendRequestPage
    // EmailValidator 
   ],
   imports: [
@@ -57,6 +59,7 @@ import { FindFriendsPage } from '../pages/fiend-friends/fiend-friends';
     FriendsPage,
     ProfilePage,
     CommentsPage,
+    FriendRequestPage,
     FindFriendsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},AuthData]

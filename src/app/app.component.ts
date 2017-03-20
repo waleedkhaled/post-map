@@ -10,7 +10,7 @@ import { AuthData } from '../providers/auth-data';
 import { LoadingController } from 'ionic-angular';
 //import { firebaseConfig } from './firebase.config';
 import firebase from 'firebase';
-
+import {FriendRequestPage} from '../pages/friend-request/friend-request';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
