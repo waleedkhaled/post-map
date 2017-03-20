@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar light>
+    <ion-title>findFriends</ion-title>
+    <ion-buttons left>
+      <button (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon> Back
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+<ion-list>
+<ion-item *ngFor="let item of assetCollection">
+   <div>
+     {{ item }}
+    <button ion-button round>addFrined</button>
+   </div>
+ </ion-item>
+ </ion-list>
+
+</ion-content>
+
+
+

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar light>
+    <ion-title>Comments</ion-title>
+    <ion-buttons left>
+      <button (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon> Back
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let comment of comments">
+      <!--ion-avatar item-left>
+        <img [src]="comment.user.avatar">
+      </ion-avatar-->
+      <h2><strong>gjhgj</strong></h2>
+      <p>{{ comment }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input type="text" [(ngModel)]="newComment.comments" placeholder="add new comment"></ion-input>
+    <ion-buttons end>
+      <button (click)="addComment()">
+        Post
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

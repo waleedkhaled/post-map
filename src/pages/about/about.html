@@ -1,0 +1,60 @@
+<ion-header no-border>
+  <ion-navbar color="gray">
+    <ion-buttons left>
+        <button  ion-button icon-only (click)=addFriends()>new Friend</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content fullscreen>
+ 
+    <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="gear">
+            Gear
+        </ion-segment-button>
+        <ion-segment-button value="clothing">
+            Clothing
+        </ion-segment-button>
+        <ion-segment-button value="nutrition">
+            Nutrition
+        </ion-segment-button>
+    </ion-segment>
+ 
+    <ion-card *ngFor="let card of cards">
+ 
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://avatars.io/facebook/joshua.morony" />
+        </ion-avatar>
+        <h2>{{card.userName}}</h2>
+      </ion-item>
+ 
+      <img src={{card.URL}} />
+ 
+      <ion-card-content>
+        picture
+      </ion-card-content>
+ 
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="like( card )">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{card.likes}}</div><p>  </p> Likes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="showComments( card )">
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            {{card.disLike}}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+ 
+    </ion-card>
+ 
+</ion-content>
