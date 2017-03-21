@@ -1,0 +1,7 @@
+{
+    "name": "Post Map",
+    "description": "application for posting in map",
+    "repository": "https://github.com/PostMap/post-map.git",
+    "logo": "logo.jpg",
+    "keywords": ["ionic", "devdactic", "whatever"]
+}
