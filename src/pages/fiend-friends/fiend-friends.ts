@@ -70,15 +70,20 @@ firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).c
     this.viewCtrl.dismiss();
   }
   addFriend(x){
-     var userName="";
+     var userName;
     firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child('user').on("value", function(snapshot) {
 userName=snapshot.val();
+console.log(userName)
 })
    
-    console.log(userName)
+    if(userName){
     var database=firebase.database().ref("/userProfile").child(x).child("friendRequests").child(firebase.auth().currentUser.uid).set(userName);
-
+}
+    else{
+     alert("error friend hasn't been added please try again")
+     }
   }
+
 
  
 }
