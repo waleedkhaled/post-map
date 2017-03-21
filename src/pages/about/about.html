@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar color="gray">
     <ion-buttons left>
-        <button  ion-button icon-only (click)=addFriends()>new Friend</button>
+        <button  ion-button icon-only (click)=addFriends()>+ Friend</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -24,15 +24,16 @@
  
       <ion-item>
         <ion-avatar item-left>
-          <img src="https://avatars.io/facebook/joshua.morony" />
+          <img src={{card.src}} />
         </ion-avatar>
         <h2>{{card.user}}</h2>
       </ion-item>
  
       <img src={{card.URL}} />
+
  
       <ion-card-content>
-        picture
+        {{card.post.post}}
       </ion-card-content>
  
       <ion-row>

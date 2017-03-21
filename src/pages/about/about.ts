@@ -10,60 +10,71 @@ import { FindFriendsPage } from '../fiend-friends/fiend-friends';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-    arr:any;
+    arr:any={};
     cards: any;
     category: string = 'gear';
    // tab1Root: any = HomePage;
     likesNum:any;
-    friendsArr:any[]=[]
- 
+    friendsArr:any[]=[];
+     picture:any;
     constructor(public navCtrl: NavController , private modalCrtl: ModalController) {
-         this.arr={};
         this.cards = [];
         this.likesNum;
-        
+  
       firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child("friends").once('value', (_snapshot: any) => {
             let friends=[];
       _snapshot.forEach((_childSnapshot) => {
          friends.push(_childSnapshot.val())
           })
       this.friendsArr=friends;
-
       });
-
       firebase.database().ref('assets').orderByKey().once('value', (_snapshot: any) => {
         
       _snapshot.forEach((_childSnapshot) => {
         // get the key/id and the data for display
         var element = _childSnapshot.val();
         element.id = _childSnapshot.key;
-        //this.obj=element.likes;
-         //console.log(element.owner )
+        //to set the post "" if no one ...
         if(this.friendsArr.indexOf(element.owner)>-1){
-         element.likes=Object.keys(element.likes).length;
+           if(element.post===undefined){
+             element.post={post:""};
+           }
+
+        firebase.database().ref('assets').child(element.id).child("likes").once('value',(_snapshot: any) => {
+         this.arr={}
+         _snapshot.forEach((_childSnapshot) => {
+           this.arr[_childSnapshot.key]=1;
+            //console.log(obj)
+          })
+         element.likes=Object.keys(this.arr).length;
+         })
+        //console.log(this.arr)
+         
+         //to get profile image ....
+         var database= firebase.database().ref('userProfile').child(element.owner);
+         database.child('src').on("value", function(snapshot) {
+         element.src=snapshot.val();
+             })
+         
+        //to get name of user ...
          element.user=element.email.slice(0,element.email.indexOf("@"));
          this.cards.push(element);
+     
          }
       })
     })
  
    }
    like(item: any): void{
-    
-    firebase.database().ref('assets').child(item.id).child("likes").child(firebase.auth().currentUser.uid.slice(-10)).set(1);
-     firebase.database().ref('assets').child(item.id).child("likes").once('value', (_snapshot: any) => {
-        this.arr=[];
-      _snapshot.forEach((_childSnapshot) => {
-       // console.log(_childSnapshot.key)
-          this.arr[_childSnapshot.key]=_childSnapshot.val();
-       // console.log(x)
-       //   element.likes=Object.keys(element.likes).length;
-       // this.cards.push(element);
-      })
-
-    })
-     item.likes=Object.keys(this.arr).length;
-  // item.likes=this.cards.likes;
+     // item.likes=Object.keys(this.arr).length;
+     var data=firebase.database().ref('assets').child(item.id).child("likes");
+    data.child(firebase.auth().currentUser.uid).set(1);
+    data.once("value")
+ .then(function(snapshot) {
+   item.likes = snapshot.numChildren(); 
+  
+ });
+   
   }
   showComments(item: any): void{
     let modal = this.modalCrtl.create(CommentsPage,{
@@ -75,6 +86,4 @@ export class AboutPage {
    let modal = this.modalCrtl.create(FindFriendsPage);
     modal.present(); 
   }
- 
-
 }
