@@ -31,7 +31,7 @@ export class HomePage {
             let div ="<div>";
             for(let i of message){
               
-              div+="<img style='width: 120px; height: 100px;' src ="+i+"/>"+'</div>'
+              div+="<img style='width: 240px; height: 200px;' src ="+i+"/>"+'</div>'
               div+="<br>"
             }
 
