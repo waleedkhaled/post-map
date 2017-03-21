@@ -18,16 +18,13 @@ export class UploadPage {
   assetCollection
   userAuth: any
   userName: any
-
+  newPost:any={};
   constructor(public navCtrl: NavController,
     public platform: Platform,
     private http: Http,
     private zone: NgZone
   ) {
-     // firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child('user').on("value", function(snapshot) {
-     // this.userName=snapshot.val();
-     // console.log(this.userName)
-//})
+ this.newPost={post:{post:""}};
   }
 
   trackByFunction(index, item) {
@@ -63,15 +60,17 @@ export class UploadPage {
   });
 }
 makeFileIntoBlob(_imagePath) {
-
+alert("1")
   // INSTALL PLUGIN - cordova plugin add cordova-plugin-file
   return new Promise((resolve, reject) => {
     window.resolveLocalFileSystemURL(_imagePath, (fileEntry) => {
-
+      alert("2")
       fileEntry.file((resFile) => {
-
+        alert("3")
         var reader = new FileReader();
+        alert("4")
         reader.onloadend = (evt: any) => {
+          alert("5")
           var imgBlob: any = new Blob([evt.target.result], { type: 'image/jpeg' });
           imgBlob.name = 'sample.jpg';
           resolve(imgBlob);
@@ -111,7 +110,7 @@ saveToDatabaseAssetList(_uploadSnapshot) {
   return new Promise((resolve, reject) => {
     alert('iam here ')
       Geolocation.getCurrentPosition().then((position) => {
-      alert(this.userName) 
+      alert(this.newPost) 
      var dataToSave = {
       'URL': _uploadSnapshot.downloadURL, // url to access file
       'name': _uploadSnapshot.metadata.name, // name of the file
@@ -121,11 +120,11 @@ saveToDatabaseAssetList(_uploadSnapshot) {
       'email': firebase.auth().currentUser.email,
       'lastUpdated': new Date().getTime(),
       'likes':0,
-      'disLike':0,
+      'post':this.newPost,
       'comments':"hello"
 
     };
-    
+    alert("go") 
 
     ref.push(dataToSave, (_response) => {
 
@@ -180,8 +179,6 @@ doGetPicture() {
   }, (_error) => {
     alert('Error ' + (_error.message || _error));
   });
-
-
 
 }
 }

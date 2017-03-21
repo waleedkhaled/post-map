@@ -1,21 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic2 Firebase Storage App
+      Post Photo
     </ion-title>
     <ion-buttons end>
-      <button (click)="doGetPicture()">PHOTO</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list>
-
-    <ion-item *ngFor="let item of assetCollection ; trackBy:trackByFunction">
-      <item-component [item]="item"></item-component>
-    </ion-item>
-  </ion-list>
+  <ion-toolbar>
+    <ion-input type="text" [(ngModel)]="newPost.post" placeholder="add new post..." ></ion-input>
+    <ion-buttons end>
+      <button ion-button round outline  (click)="doGetPicture()" >
+        Post
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-content>

@@ -183,22 +183,11 @@ doGetPicture() {
     alert.present();
   }
 
-  getUsername() {
-    // this.userData.getUsername().then((username) => {
-    //   this.username = username;
-    // });
-  }
-
-  changePassword() {
-    console.log('Clicked to change password');
-  }
-
   logout() {
     this.authData.logoutUser().then(() => {
     this.nav.setRoot(LoginPage);
   });
-    // this.userData.logout();
-    // this.nav.setRoot(LoginPage);
+
   }
 
 

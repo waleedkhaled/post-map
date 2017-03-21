@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar light>
-    <ion-title>findFriends</ion-title>
+    <ion-title>+Friends</ion-title>
     <ion-buttons left>
       <button (click)="close()">
-        <ion-icon name="arrow-back"></ion-icon> Back
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -14,7 +14,7 @@
 <ion-item *ngFor="let item of assetCollection1">
    <div>
      {{ item.email }}
-    <button ion-button round (click)="addFriend(item.uid)">addFriend</button>
+    <button ion-button round (click)="addFriend(item.uid)">+ add</button>
    </div>
  </ion-item>
  </ion-list>
