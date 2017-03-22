@@ -19,28 +19,27 @@ firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).c
       _snapshot.forEach((_childSnapshot) => {
          friends.push(_childSnapshot.val())
           })
-      this.friendsArr=friends;
-      });
+         this.friendsArr=friends;
+       });
   console.log(this.friendsArr)
         firebase.database().ref("/userProfile").once('value', (_snapshot: any) => {
             let arr=[];
       _snapshot.forEach((_childSnapshot) => {
         // get the key/id and the data for display
-        var element = _childSnapshot.val();
-        element.id = _childSnapshot.key;
-        console.log(element)
+          var element = _childSnapshot.val();
+          element.id = _childSnapshot.key;
+          console.log(element)
           if(element.email!==firebase.auth().currentUser.email&&this.friendsArr.indexOf(element.uid)===-1){
             element.email=element.email.slice(0,element.email.indexOf('@'));
-
-           arr.push(element);
+            arr.push(element);
           }
       });
-        this.assetCollection1=arr;
-        this.assetCollection2=arr; 
-     });
+           this.assetCollection1=arr;
+           this.assetCollection2=arr; 
+     }); 
   }
   initializeItems() {
-  this.assetCollection1=this.assetCollection2;
+    this.assetCollection1=this.assetCollection2;
 
  }
  getItems(ev) {
@@ -72,13 +71,13 @@ firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).c
   addFriend(x){
      var userName;
     firebase.database().ref("/userProfile").child(firebase.auth().currentUser.uid).child('user').on("value", function(snapshot) {
-userName=snapshot.val();
-console.log(userName)
-})
+    userName=snapshot.val();
+    console.log(userName)
+    })
    
     if(userName){
     var database=firebase.database().ref("/userProfile").child(x).child("friendRequests").child(firebase.auth().currentUser.uid).set(userName);
-}
+     }
     else{
      alert("error friend hasn't been added please try again")
      }

@@ -24,7 +24,7 @@ export class UploadPage {
     private http: Http,
     private zone: NgZone
   ) {
- this.newPost={post:{post:""}};
+ 
   }
 
   trackByFunction(index, item) {
@@ -129,6 +129,7 @@ saveToDatabaseAssetList(_uploadSnapshot) {
     ref.push(dataToSave, (_response) => {
 
       resolve(_response);
+      this.newPost=undefined;
     }).catch((_error) => {
       reject(_error);
     });

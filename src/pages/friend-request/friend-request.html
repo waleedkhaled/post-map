@@ -20,11 +20,17 @@
 <ion-content padding>
 
 <ion-list>
-    <ion-item *ngFor="let friend of arr">
-   
-      <p>{{friend.user}}</p>
+    <div *ngFor="let friend of arr">
+     <ion-item>
+     <ion-avatar item-left>
+     <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" />
+     </ion-avatar>
+      <h2 style="position: absolute; left: 70px; top:27px;">{{friend.user}}</h2>
+      <ion-buttons end>
       <button ion-button round outline (click)="accept(friend.uid,$key)">accept</button>
-    </ion-item>
+      </ion-buttons>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>
 

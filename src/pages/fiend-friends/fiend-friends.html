@@ -10,13 +10,20 @@
 </ion-header>
 <ion-content padding>
 <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-<ion-list>
-<ion-item *ngFor="let item of assetCollection1">
-   <div>
-     {{ item.email }}
-    <button ion-button round (click)="addFriend(item.uid)">+ add</button>
-   </div>
+ <ion-list>
+ <div *ngFor="let item of assetCollection1">
+ <ion-item>
+ 
+     <ion-avatar item-left>
+     <img src={{item.src}} />
+     </ion-avatar>
+     <h2 style="position: absolute; left: 70px; top:27px;">{{ item.email }}</h2>
+     <ion-buttons end>
+     <button ion-button round (click)="addFriend(item.uid)">+ add</button>
+     </ion-buttons>
+    
  </ion-item>
+ </div>
  </ion-list>
 
 </ion-content>

@@ -6,6 +6,7 @@ import { Component,trigger, state, style, transition, animate, keyframes } from 
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { EmailValidator } from '../../app/validators/email-validator';
+import { TabsPage } from '../tabs/tabs';
 import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 
@@ -94,7 +95,7 @@ export class SignupPage {
       .then(() => {
 
         this.loading.dismiss().then( () => {
-          this.nav.setRoot(HomePage);
+          this.nav.setRoot(TabsPage);
         });
       }, (error) => {
         this.loading.dismiss().then( () => {

@@ -6,6 +6,7 @@ import { InfoModalPage } from '../info-modal/info-modal';
 import { AuthData } from  '../../providers/auth-data';
 import {LoginPage} from '../login/login';
 import  {SignupPage} from '../signup/signup';
+import {App} from 'ionic-angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -20,7 +21,8 @@ export class HomePage {
     arr;
     likes;
     waleed=0;
-  constructor(public navCtrl: NavController , public modalCtrl: ModalController , public authData:AuthData) {
+    public local : Storage;
+  constructor(private _app: App ,public navCtrl: NavController , public modalCtrl: ModalController , public authData:AuthData) {
   }
   ionViewDidLoad(){
     this.loadMap()
@@ -96,20 +98,18 @@ export class HomePage {
   })
  
   }
-//    goToCreate(){
-//      let arr=[];
-//   let database=firebase.database().ref();
-//   database.child("userProfile").child(firebase.auth().currentUser.uid).child("friends").push({"a":"azoz"})
-//   let users=firebase.database().ref().child("userProfile");
-//   users.on("child_added",snap=>{
-//   arr.push(snap.val());
-//   });
-//   console.log(arr);
-// }
+
   logOut(){
   this.authData.logoutUser().then(() => {
-    this.navCtrl.setRoot(LoginPage);
-  });
+     // const root = this._app.getRootNav();
+     //    root.popToRoot();
+   this.navCtrl.parent.parent.setRoot(LoginPage);
+
+   
+});
+
+
+ // });
 }
  
 }

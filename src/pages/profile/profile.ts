@@ -185,7 +185,7 @@ doGetPicture() {
 
   logout() {
     this.authData.logoutUser().then(() => {
-    this.nav.setRoot(LoginPage);
+    this.nav.parent.parent.setRoot(LoginPage);
   });
 
   }
