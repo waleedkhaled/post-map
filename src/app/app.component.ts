@@ -79,6 +79,7 @@ export class MyApp {
       const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       this.zone.run( () => {
     if (!user) {
+      
       this.rootPage = LoginPage;
       unsubscribe();
     } else { 
