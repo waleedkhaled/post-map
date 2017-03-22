@@ -13,7 +13,6 @@ import { InfoModalPage } from '../pages/info-modal/info-modal' ;
 import { UploadPage } from '../pages/upload/upload';
 import { ItemComponent } from './../pages/upload/upload';
 import { AuthData } from '../providers/auth-data';
-import { FriendsPage } from '../pages/friends/friends'; 
 import { ProfilePage } from '../pages/profile/profile';
 import { CommentsPage } from '../pages/comments/comments';
 import { FindFriendsPage } from '../pages/fiend-friends/fiend-friends';
@@ -33,7 +32,6 @@ import { FindFriendsPage } from '../pages/fiend-friends/fiend-friends';
     ItemComponent,
     ResetPasswordPage,
     SignupPage,
-    FriendsPage,
     ProfilePage,
     CommentsPage,
     FindFriendsPage,
@@ -56,7 +54,6 @@ import { FindFriendsPage } from '../pages/fiend-friends/fiend-friends';
     ItemComponent,
      ResetPasswordPage,
     SignupPage,
-    FriendsPage,
     ProfilePage,
     CommentsPage,
     FriendRequestPage,
